@@ -1,16 +1,39 @@
-import React, { Component } from "react";
+import React from "react";
+
+//redux
+import {connect} from 'react-redux';
+import {getData} from '../actions';
+
+//components
+import Smurfs from './Smurfs/Smurfs';
+
+//styles
 import "./App.css";
-class App extends Component {
-  render() {
+
+const App = (props) => {
+
+  const handleClick= e =>{
+    e.preventDefault();
+    props.getData();
+    console.log('clicked!');
+  }
+
     return (
       <div className="App">
         <h1>SMURFS! 2.0 W/ Redux</h1>
-        <div>Welcome to your state management version of Smurfs!</div>
-        <div>Start inside of your `src/index.js` file!</div>
-        <div>Have fun!</div>
+        <button onClick= {e => {handleClick(e)}}>Check Out Our Smurfs</button>
+        <Smurfs />
       </div>
     );
+}
+
+const mapStateToProps= state => {
+  return{
+
   }
 }
 
-export default App;
+export default connect(
+  mapStateToProps,
+  {getData}
+)(App);
