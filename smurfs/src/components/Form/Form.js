@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 
 //redux
-import {connect} from 'react-redux';
-import {addSmurf} from '../../actions/addSmurf.js';
+import { connect } from 'react-redux';
+import { addSmurf } from '../../actions/addSmurf.js';
 
 //styles
 import './Form.scss';
@@ -10,7 +10,7 @@ import './Form.scss';
 const Form = (props) => {
 
   const [value, setValue] = useState({
-    name: '', 
+    name: '',
     age: '',
     height: '',
     id: ''
@@ -18,18 +18,20 @@ const Form = (props) => {
 
   const handleSubmit = (e, value) => {
     e.preventDefault();
-    props.addSmurf(value);
-    setValue({
-      name: '', 
-      age: '',
-      height: '',
-      id: ''
-    });
-    console.log('smurfs from submit: ', props.smurfs);
-  }
+    //dont allow an empty form submit
+    if (value.name.length !== 0) {
+      props.addSmurf(value);
+      setValue({
+        name: '',
+        age: '',
+        height: '',
+        id: ''
+      });
+    }//end if
+  }//end handleSubmit
 
   const handleChange = e => {
-    setValue( {
+    setValue({
       ...value,
       [e.target.name]: e.target.value
     });
@@ -38,7 +40,7 @@ const Form = (props) => {
   return (
     <div>
       <form onSubmit={(e) => handleSubmit(e, value)}>
-        <label htmlFor= 'name'>Name: </label>
+        <label htmlFor='name'>Name: </label>
         <input
           type='text'
           placeholder='Name'
@@ -47,7 +49,7 @@ const Form = (props) => {
           value={value.name}
           onChange={e => handleChange(e)}
         />
-        <label htmlFor= 'age'>Age</label>
+        <label htmlFor='age'>Age</label>
         <input
           type='text'
           placeholder='Age'
@@ -65,20 +67,19 @@ const Form = (props) => {
           value={value.height}
           onChange={e => handleChange(e)}
         />
-        
         <button type='submit'>Add Smurf</button>
       </form>
     </div>
   )
 }
 
-const mapStateToProps= state => {
-  return{
+const mapStateToProps = state => {
+  return {
     smurfs: state.smurfs
   }
 }
 
 export default connect(
   mapStateToProps,
-  {addSmurf}
+  { addSmurf }
 )(Form);

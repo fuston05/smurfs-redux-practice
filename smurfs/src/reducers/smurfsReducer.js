@@ -5,17 +5,11 @@ import {
   SET_ERROR
 } from '../actions/getSmurf';
 import {ADD_SMURF} from '../actions/addSmurf';
+import {DELETE_SMURF} from '../actions/deleteSmurf';
 
 //initial state
 const initialState= {
-  smurfs: [
-    {
-      id: '10',
-      name: 'burpy',
-      age: '200',
-      height: '6cm'
-    }
-  ],
+  smurfs: [{}],
   isLoading: false,
   error: ''
 }//end initialState
@@ -52,6 +46,15 @@ export const smurfsReducer= ( state= initialState, action ) => {
       error: false,
       smurfs: [...state.smurfs, newSmurf]
     }
+
+    case DELETE_SMURF: 
+    const newArr= state.smurfs.filter( smurf => {
+      return smurf.id != action.payload.id
+    } );
+      return{
+        ...state,
+        smurfs: [newArr]
+      }
   
     default:
       return state;
