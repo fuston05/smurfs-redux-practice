@@ -5,6 +5,7 @@ export const UPDATE_SMURFS = "UPDATE_SMURFS";
 export const SET_ERROR = "SET_ERROR";
 
 export const getData = () => dispatch => {
+  // console.log('get a smurf');
   dispatch({ type: FETCH_DATA });
   axios
     .get("http://localhost:3333/smurfs")
@@ -17,3 +18,5 @@ export const getData = () => dispatch => {
       dispatch({ type: SET_ERROR, payload: "Error fetching data from api" });
     });
 };
+
+

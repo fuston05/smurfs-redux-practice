@@ -3,13 +3,14 @@ import {
   FETCH_DATA,
   UPDATE_SMURFS,
   SET_ERROR
-} from '../actions';
+} from '../actions/getSmurf';
+import {ADD_SMURF} from '../actions/addSmurf';
 
 //initial state
 const initialState= {
   smurfs: [
     {
-      id: '',
+      id: '10',
       name: 'burpy',
       age: '200',
       height: '6cm'
@@ -25,7 +26,8 @@ export const smurfsReducer= ( state= initialState, action ) => {
     return{
       ...state,
       isLoading: true,
-      error: false
+      error: false,
+      smurfs: []
     }
 
     case UPDATE_SMURFS: 
@@ -34,6 +36,21 @@ export const smurfsReducer= ( state= initialState, action ) => {
       isLoading: false,
       error: false,
       smurfs: [...state.smurfs, ...action.payload]
+    }
+
+    case ADD_SMURF: 
+    console.log('addSmurf fired from reducer');
+    const newSmurf= {
+      id: Date.now()*Math.random(),
+      name: action.payload.name,
+      age: action.payload.age,
+      height: action.payload.height
+    }
+    return{
+      ...state,
+      isLoading: false,
+      error: false,
+      smurfs: [...state.smurfs, newSmurf]
     }
   
     default:
