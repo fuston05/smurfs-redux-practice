@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 //redux
 import { connect } from 'react-redux';
-import { addSmurf } from '../../actions/addSmurf.js';
+import { addSmurf } from '../../actions';
 
 //styles
 import './Form.scss';
@@ -38,7 +38,7 @@ const Form = (props) => {
   }
 
   return (
-    <div>
+    <>
       <form onSubmit={(e) => handleSubmit(e, value)}>
         <label htmlFor='name'>Name: </label>
         <input
@@ -58,7 +58,7 @@ const Form = (props) => {
           value={value.age}
           onChange={e => handleChange(e)}
         />
-        <label></label>
+        <label>Height: </label>
         <input
           type='text'
           placeholder='Height'
@@ -69,7 +69,7 @@ const Form = (props) => {
         />
         <button type='submit'>Add Smurf</button>
       </form>
-    </div>
+    </>
   )
 }
 

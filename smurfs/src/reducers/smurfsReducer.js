@@ -2,10 +2,9 @@
 import {
   FETCH_DATA,
   UPDATE_SMURFS,
-  SET_ERROR
-} from '../actions/getSmurf';
-import {ADD_SMURF} from '../actions/addSmurf';
-import {DELETE_SMURF} from '../actions/deleteSmurf';
+  SET_ERROR, 
+  ADD_SMURF, DELETE_SMURF
+} from '../actions';
 
 //initial state
 const initialState= {
@@ -35,7 +34,6 @@ export const smurfsReducer= ( state= initialState, action ) => {
     case ADD_SMURF: 
     console.log('addSmurf fired from reducer');
     const newSmurf= {
-      id: Date.now()*Math.random(),
       name: action.payload.name,
       age: action.payload.age,
       height: action.payload.height
