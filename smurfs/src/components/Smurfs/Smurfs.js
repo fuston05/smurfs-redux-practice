@@ -14,7 +14,7 @@ const Smurfs = (props) => {
     <div className= 'smurfsCont'>
       {
       props.smurfs.map( smurf => {
-        return <SmurfCard handleDelete= {props.handleDelete} key= {smurf.id} smurf= {smurf} />
+        return <SmurfCard handleDelete= {() => {props.handleDelete(smurf)}} key= {smurf.id} smurf= {smurf} />
       } )
       }
     </div>

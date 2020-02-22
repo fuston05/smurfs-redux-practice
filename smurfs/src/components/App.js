@@ -2,8 +2,7 @@ import React from "react";
 
 //redux
 import { connect } from 'react-redux';
-import { getData } from '../actions/getSmurf';
-import { deleteSmurf } from '../actions/deleteSmurf';
+import { getData, deleteSmurf } from '../actions';
 
 //components
 import Smurfs from './Smurfs/Smurfs';

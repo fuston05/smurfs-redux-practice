@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 //redux
 import { connect } from 'react-redux';
-import { addSmurf } from '../../actions/addSmurf.js';
+import { addSmurf } from '../../actions';
 
 //styles
 import './Form.scss';
