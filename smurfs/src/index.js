@@ -4,18 +4,13 @@ import ReactDOM from "react-dom";
 //components
 import App from "./components/App";
 
-//redux
-import {smurfsReducer} from './reducers/smurfsReducer';
-import { createStore, applyMiddleware } from "redux";
-import thunk from "redux-thunk";
-import { Provider } from "react-redux";
+//redux imports
 
 //styles
 import "./index.scss";
 
-const store = createStore(smurfsReducer, applyMiddleware(thunk));
+// CREATE STORE
 
-ReactDOM.render(
-<Provider store= {store}>
-  <App />
-</Provider>, document.getElementById("root"));
+
+//WRAP APP IN PROVIDER
+ReactDOM.render(<App />, document.getElementById("root"));

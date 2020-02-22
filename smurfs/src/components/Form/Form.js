@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
 
 //redux
-import { connect } from 'react-redux';
-import { addSmurf } from '../../actions';
+
 
 //styles
 import './Form.scss';
 
-const Form = (props) => {
+const Form = () => {
 
   const [value, setValue] = useState({
     name: '',
@@ -73,13 +72,5 @@ const Form = (props) => {
   )
 }
 
-const mapStateToProps = state => {
-  return {
-    smurfs: state.smurfs
-  }
-}
 
-export default connect(
-  mapStateToProps,
-  { addSmurf }
-)(Form);
+export default Form;
