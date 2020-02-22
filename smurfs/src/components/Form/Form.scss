@@ -1,0 +1,37 @@
+form{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 40%;
+
+  label{
+    font-size: 1.2rem;
+    color: #777;
+  }
+
+  input{
+    color: #777;
+    padding: 5px;
+    margin: 5px 0 10px 0;
+    font-size: 1.2rem;
+    border-radius: 8px;
+    border: 1px solid #bbb;
+  }
+
+  button{
+    padding: 5px 8px;
+    font-size: 1.2rem;
+    color: #eee;
+    background-color: cornflowerblue;
+    border: 1px solid #333;
+    border-radius: 8px;
+
+    &:hover{
+      cursor: pointer;
+      color: khaki;
+      background-color: rgb(75, 112, 180);
+    }
+
+  }//end button
+
+}//end form

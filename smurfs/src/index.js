@@ -11,7 +11,7 @@ import thunk from "redux-thunk";
 import { Provider } from "react-redux";
 
 //styles
-import "./index.css";
+import "./index.scss";
 
 const store = createStore(smurfsReducer, applyMiddleware(thunk));
 
