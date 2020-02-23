@@ -1,34 +1,37 @@
 import React from "react";
 
-//redux
-import { connect } from 'react-redux';
-import { getData, deleteSmurf } from '../actions';
+//{connect}
+import {connect} from 'react-redux';
+
+//import actions
+import {deleteSmurf, getData} from '../actions';
+
 
 //components
-import Smurfs from './Smurfs/Smurfs';
-import Form from './Form/Form';
+import Form from '../components/Form/Form';
+import Smurfs from '../components/Smurfs/Smurfs';
 
 //styles
 import "./App.scss";
 
 const App = (props) => {
-  const smufCount= props.smurfs.length;
+  const smurfCount= props.smurfs.length;
 
   const getSmurfData = e => {
-    e.preventDefault();
     props.getData();
-    console.log('clicked!');
+    e.preventDefault();
+    console.log('get smurf clicked!');
   }
 
   const handleDelete= (smurf) => {
-    console.log('delete');
     props.deleteSmurf(smurf);
+    console.log('delete clicked');
   }
 
   return (
     <div className="App">
-      <h1>SMURFS! 2.0 W/ Redux</h1>
-      {smufCount <2 && <button onClick={e => { getSmurfData(e) }}>Check Out Our Smurfs</button>}
+      <h1>SMURFS VILLAGE</h1>
+      {smurfCount <2 && <button onClick={e => { getSmurfData(e) }}>Check Out Our Smurfs</button>}
       <div className= 'form-smurfs-cont'>
         <Form />
         <Smurfs handleDelete={handleDelete} />
@@ -37,13 +40,14 @@ const App = (props) => {
   );
 }
 
-const mapStateToProps = state => {
-  return {
+//mapStateToProps
+const mapStateToProps= state => {
+  return{
     smurfs: state.smurfs
   }
 }
 
 export default connect(
   mapStateToProps,
-  { getData, deleteSmurf }
+  {getData, deleteSmurf}
 )(App);
