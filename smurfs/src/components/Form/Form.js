@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
 
-//redux
+// {connect} .. react-redux
+import {connect} from 'react-redux';
+
+//import action creator
+import {addSmurf} from '../../actions';
 
 
 //styles
 import './Form.scss';
 
-const Form = () => {
+const Form = (props) => {
 
   const [value, setValue] = useState({
     name: '',
@@ -71,6 +75,15 @@ const Form = () => {
     </>
   )
 }
+//mapStateToProps
+const mapStateToProps= state => {
+  return{
 
+  }
+}
 
-export default Form;
+// wrap in connect
+export default connect(
+  mapStateToProps,
+  {addSmurf}
+)(Form);

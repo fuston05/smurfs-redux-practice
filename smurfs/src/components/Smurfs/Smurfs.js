@@ -3,13 +3,14 @@ import React from 'react';
 //components
 import SmurfCard from '../SmurfCard/SmurfCard';
 
-//redux
+// {connect} 
+import {connect} from 'react-redux';
 
 
 //styles
 import './Smurfs.scss';
 
-const Smurfs = () => {
+const Smurfs = (props) => {
   return (
     <div className= 'smurfsCont'>
       {/* if no smurfs display 'add smurf' message */}
@@ -22,4 +23,15 @@ const Smurfs = () => {
   )
 }
 
-export default Smurfs;
+//mapStateToProps
+const mapStateToProps= state => {
+  return{
+    smurfs: state.smurfs
+  }
+}
+
+// wrap in connect
+export default connect(
+  mapStateToProps,
+  {}
+)(Smurfs);
